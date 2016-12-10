@@ -35,7 +35,7 @@ plotheight <- 600
 
 #plot bip
 png("images/plot_bip.png", plotwidth, plotheight)
-plot(bip_DE, type="o", ylim=c(0,3500), main="Bruttoinlandsprodukt", xlab="Jahr", ylab="BIP (in Milliarden Dollar/Euro)", pch=15, col=color2[1])
+plot(bip_DE, type="o", ylim=c(0,3500), main="Bruttoinlandprodukt", xlab="Jahr", ylab="BIP (in Milliarden Dollar/Euro)", pch=15, col=color2[1])
 lines(bip_GR,type="o", pch=16, col=color2[2])
 legend("topleft", inset=0.05 ,1, c("Deutschland (Euro)","Griechenland (Dollar)"), bty = "n",  col=color2, pch=c(15,16), lty=(1))
 dev.off()
