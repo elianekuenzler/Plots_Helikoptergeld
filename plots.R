@@ -40,6 +40,20 @@ lines(bip_GR,type="o", pch=16, col=color2[2])
 legend("topleft", inset=0.05 ,1, c("Deutschland (Euro)","Griechenland (Dollar)"), bty = "n",  col=color2, pch=c(15,16), lty=(1))
 dev.off()
 
+#plot bip trend
+lm_bip_DE <- lm(bip ~ year, data=bip_DE)
+lm_bip_GR <- lm(bip ~ year, data=bip_GR)
+png("images/plot_bip_trend.png", plotwidth, plotheight)
+plot(bip_DE, type="o",xaxt="n", ylim=c(0,4000), xlim=c(1980,2025), main="Bruttoinlandprodukt", xlab="Jahr", ylab="BIP (in Milliarden Dollar/Euro)", pch=15, col=color2[1])
+lines(bip_GR,type="o", pch=16, col=color2[2])
+abline(lm_bip_GR, lty=(5))
+abline(lm_bip_DE, lty=(5))
+axis(1, at = seq(1980, 2025, by = 5))
+legend("topleft", inset=0.05 ,1, c("Deutschland (Euro)","Griechenland (Dollar)"), bty = "n",  col=color2, pch=c(15,16), lty=c(1,1,1,5))
+text(x =2020, y = 500,labels="linreg: y= 7.84x-15500.56")
+text(x  =2020, y = 3900,labels="linreg: y= 64.19x-126340.81")
+dev.off()
+
 #plot bip_with_m3
 png("images/plot_bip_with_m3.png", plotwidth, plotheight)
 plot(moneySupply_M3_percent,xaxt="n" , ylim=c(90,300),type="o", main="Prozentualeveränderung des BIP Deutschland und BIP Griechenland im Vergleich mit der Geldmenge M3", xlab="Jahr", ylab="Delta zu 1997 (%)", pch=15, col=color3[1])
