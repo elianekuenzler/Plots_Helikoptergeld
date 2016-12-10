@@ -95,5 +95,14 @@ text(x =2020, y = 100,labels="linreg: y= 0.5345x-1000.08")
 text(x =2020, y = 270,labels="linreg: y= 9.872x-19701.232")
 dev.off()
 
-
-
+#correlation between bip (germany/greek) and m3
+moneySupply_M3_gt_1996 <- subset(moneySupply_M3, year > 1996)
+bip_GR_gt_1996 <- subset(bip_GR, year > 1996)
+bip_DE_gt_1996 <- subset(bip_DE, year > 1996)
+moneySupply_M3_gt_1996_cash <- moneySupply_M3_gt_1996[,"cash"]
+bip_GR_gt_1996_bip <- rev(bip_GR_gt_1996[,"bip"])
+bip_DE_gt_1996_bip <- bip_DE_gt_1996[,"bip"]
+  #greek <-> m3
+  cor.test(moneySupply_M3_gt_1996_cash, bip_GR_gt_1996_bip, method = "pearson")
+  #germany <-> m3
+  cor.test(moneySupply_M3_gt_1996_cash, bip_DE_gt_1996_bip, method = "pearson")
